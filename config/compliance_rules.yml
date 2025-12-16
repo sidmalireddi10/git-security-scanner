@@ -1,0 +1,144 @@
+# Compliance rules for Git best practices
+
+commit_message:
+  # Conventional commit types
+  conventional_types:
+    - "feat"
+    - "fix"
+    - "docs"
+    - "style"
+    - "refactor"
+    - "perf"
+    - "test"
+    - "build"
+    - "ci"
+    - "chore"
+    - "revert"
+  
+  # Minimum message length
+  min_length: 10
+  
+  # Maximum subject line length
+  max_subject_length: 72
+  
+  # Require description for certain types
+  require_body_for:
+    - "feat"
+    - "fix"
+    - "refactor"
+
+file_restrictions:
+  # Maximum file size in MB
+  max_file_size_mb: 50
+  
+  # File extensions that should not be committed
+  forbidden_extensions:
+    - ".env"
+    - ".pem"
+    - ".key"
+    - ".p12"
+    - ".pfx"
+    - ".cer"
+    - ".crt"
+    - ".der"
+    - ".keystore"
+    - ".jks"
+    - ".log"
+  
+  # Binary file extensions to warn about
+  binary_extensions:
+    - ".exe"
+    - ".dll"
+    - ".so"
+    - ".dylib"
+    - ".zip"
+    - ".tar"
+    - ".gz"
+    - ".rar"
+    - ".7z"
+    - ".bin"
+    - ".iso"
+  
+  # Large file types that need review
+  large_file_types:
+    - ".pdf"
+    - ".mp4"
+    - ".avi"
+    - ".mov"
+    - ".psd"
+    - ".ai"
+
+branch_naming:
+  # Valid branch name patterns
+  valid_patterns:
+    - "^feature/[a-z0-9-]+$"
+    - "^bugfix/[a-z0-9-]+$"
+    - "^hotfix/[a-z0-9-]+$"
+    - "^release/[0-9]+\\.[0-9]+\\.[0-9]+$"
+    - "^main$"
+    - "^master$"
+    - "^develop$"
+  
+  # Protected branches
+  protected_branches:
+    - "main"
+    - "master"
+    - "production"
+  
+  # Require issue number in branch name
+  require_issue_number: false
+
+gitignore_rules:
+  # Files/directories that must be in .gitignore
+  required_entries:
+    - "node_modules/"
+    - "__pycache__/"
+    - "*.pyc"
+    - ".env"
+    - ".venv/"
+    - "venv/"
+    - ".DS_Store"
+    - "*.log"
+  
+  # Check for .gitignore existence
+  require_gitignore: true
+
+security:
+  # Sensitive files that should be in .gitignore
+  sensitive_files:
+    - ".env"
+    - ".env.local"
+    - ".env.production"
+    - ".env.development"
+    - "credentials.json"
+    - "service-account.json"
+    - "secrets.yml"
+    - "config/secrets.yml"
+    - "id_rsa"
+    - "id_dsa"
+    - "*.pem"
+    - "*.key"
+  
+  # Directories that should be in .gitignore
+  sensitive_directories:
+    - ".aws/"
+    - ".ssh/"
+    - "credentials/"
+    - "secrets/"
+
+code_quality:
+  # File size warnings (in KB)
+  warn_file_size_kb: 500
+  
+  # Maximum lines per file
+  max_lines_per_file: 1000
+  
+  # Check for TODO/FIXME comments
+  check_todos: true
+  
+  # Warn on debug statements
+  debug_patterns:
+    - "console.log"
+    - "print("
+    - "debugger"
+    - "System.out.println"
