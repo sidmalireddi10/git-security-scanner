@@ -252,12 +252,14 @@ if __name__ == '__main__':
     
     if os.path.isfile(args.path):
         findings = scanner.scan_file(args.path)
+        scanner.findings = findings  # Store findings for summary
     else:
         findings = scanner.scan_directory(args.path)
         
         if args.history > 0:
             history_findings = scanner.scan_git_history(args.path, args.history)
             findings.extend(history_findings)
+            scanner.findings = findings  # Update findings with history
     
     print(f"\n{'='*60}")
     print("SECRET SCANNER RESULTS")
